@@ -44,6 +44,7 @@ fn shared_badge(sack1: []const u8, sack2: []const u8, sack3: []const u8) ?u8 {
 }
 
 pub fn main() !void {
+    // Part 1
     var lines = std.mem.tokenize(u8, input, "\r\n");
     var sum: u32 = 0;
     while (lines.next()) |line| {
@@ -53,10 +54,9 @@ pub fn main() !void {
     std.debug.print("Part 1: {}\n", .{sum});
 
     // Part 2
-    lines = std.mem.tokenize(u8, input, "\r\n");
+    lines.reset();
     sum = 0;
-    while (lines.peek()) |_| {
-        const line1 = lines.next().?;
+    while (lines.next()) |line1| {
         const line2 = lines.next().?;
         const line3 = lines.next().?;
         const item = shared_badge(line1, line2, line3).?;
